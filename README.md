@@ -15,6 +15,7 @@ kernel with the name specified in the config file before installing dependencies
 Be sure to uncomment lines:
 
 > /data/
+
 > reports/data-profiling/*
 
 From .gitignore file if data should be ignored in versioning
