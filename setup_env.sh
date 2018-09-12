@@ -33,6 +33,10 @@ python -m ipykernel install --user --name $project_name --display-name $project_
 # Add conda forge as an install channel
 conda config -add channels conda-forge
 
+# Install pip in current env so pip installs only install
+# in current env
+conda install pip
+
 # Install requirements 
 make requirements
 
