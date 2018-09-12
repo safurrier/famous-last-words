@@ -30,6 +30,9 @@ source activate $project_name
 # Attach kernel of this environment for use with jupyter 
 python -m ipykernel install --user --name $project_name --display-name $project_name
 
+# Add conda forge as an install channel
+conda config -add channels conda-forge
+
 # Install requirements 
 make requirements
 
