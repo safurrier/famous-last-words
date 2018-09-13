@@ -29,6 +29,7 @@ printf "\n\n\n"
 read -p "Enter project name (will be used as name for a new conda env): " name
 project_name=${name:-data_science_project}
 printf "\n\n\n"
+
 # Create conda environment with project name
 conda create -y --name $project_name python jupyter ipykernel
 # Activate environment
