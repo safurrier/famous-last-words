@@ -22,8 +22,12 @@ endif
 
 ## Install Python Dependencies
 requirements: test_environment
-	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
-	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+# Read requirements.txt and conda install each line. 
+# If not available in conda, use pip to install
+    $ conda install pip
+    $ while read requirement; do conda install --yes $requirement || pip install $requirement; done < requirements.txt
+#	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
+#	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
 data: requirements
