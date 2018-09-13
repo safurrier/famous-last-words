@@ -24,6 +24,11 @@ To install various useful Jupyter Lab extensions, run:
 
 > . ./jupyter-extensions.sh
 
+If the project is finished and the environment is no longer needed 
+(it can be rebuilt running setup_env.sh again), run:
+
+> . ./teardown_env.sh
+
 Project Organization
 ------------
 
