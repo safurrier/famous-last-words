@@ -14,3 +14,6 @@ seaborn
 altair
 pandas-profiling
 scikit-learn
+
+# Install src as local package
+-e .
