@@ -4,13 +4,12 @@ default-data-science-project
 A default project structure for data projects. Created with reproducibility and automation in mind.
 Data and script execution should be kept within the Make pipeline. 
 
-To start: set the 'project_name' variable in the config file. Then run the bash script to setup the 
-environment properly.
+To start run the bash script to setup the environment properly.
 
 > . ./setup_env.sh
 
 This will initialize a git repo and make a first commit. It will also create a conda environment and
-kernel with the name specified in the config file before installing dependencies.
+kernel with the specified project name installing dependencies.
 
 Be sure to uncomment lines:
 
@@ -59,7 +58,9 @@ Project Organization
 	|
     ├── setup.sh           <- Script to initiailize git repo, setup a conda virtual environment  
     │                         and install dependencies.
-    │
+    ├── teardown_env.sh    <- Script to teardown the project conda virtual environment  
+    │                         
+    ├── setup.py           <- For installing src as a local package   
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
@@ -78,13 +79,25 @@ Project Organization
     │   │     └── visualize.py
     │   │ 
     │   └── utils          <- Utility code for various purposes and packages
-    │       │                 
-    │       ├── text_utils.py
-    │       ├── pandas_utils.py
-    │       ├── eda.py
-    │       ├── profile-data.py
-    │       ├── change-to-root-load-config.py
-    │       └── connect_to_db.py
+    │	    ├── project_utils.py   <- For project specific utilities
+    │       ├── gists              <- Code gists with commonly used code (change to root
+    │       │                         directory, connect to database, profile data, etc)
+    │       ├── io                 <- Code for input/output utilities
+    │       ├── etl                <- For building reproducible ETL pipelines, including data
+    │       │                         checks and transformers
+    │       ├── ml                 <- Machine Learning utility code (feature engineering, etc) 
+    │       ├── pandas             <- Pandas related utility code
+    │       │   ├── analysis                  
+    │       │   ├── cleaning
+    │       │   ├── engineering
+    │       │   ├── text    
+    │       │   ├── datetime     
+    │       │   ├── optimization       
+    │       │   └── profiling      
+    │       └── text               <- Code for dealing with text. Includes distributed loading of text corpus, 
+    │                                 entity statement extraction, sentiment analysis, etc.	
+    │       
+    ├── LICENSE
     │       
     └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
 
