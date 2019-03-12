@@ -1,0 +1,2 @@
+# Install src as local package
+-e .

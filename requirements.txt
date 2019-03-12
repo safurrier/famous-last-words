@@ -3,7 +3,6 @@ Sphinx
 coverage
 awscli
 flake8
-ruamel.yaml==0.15.37
 jupyter
 jupyterlab
 sphinx_rtd_theme
@@ -14,6 +13,3 @@ seaborn
 altair
 pandas-profiling
 scikit-learn
-
-# Install src as local package
--e .

@@ -10,4 +10,4 @@ source deactivate $project_name
 jupyter kernelspec uninstall -y $project_name
 
 # Remove env
-conda env remove -n $project_namevim --yes
+conda env remove -n $project_name --yes
