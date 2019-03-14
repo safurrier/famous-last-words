@@ -27,7 +27,7 @@ endif
 requirements: test_environment
 	conda install -y pip setuptools wheel
 #	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt # Faster but leads to environment errors more often
-	$ conda install -y --file requirements.txt
+	$ conda install -y -c conda-forge --file requirements.txt
 	$(PYTHON_INTERPRETER) -m pip install -r requirements_pip.txt # Install packages only available in pip
 
 ## Make Dataset
