@@ -1,4 +1,5 @@
 click
+pathlib
 Sphinx
 coverage
 awscli
