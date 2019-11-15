@@ -3,6 +3,7 @@ pathlib
 Sphinx
 coverage
 awscli
+autopep8
 flake8
 jupyter
 jupyterlab
