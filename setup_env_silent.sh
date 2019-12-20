@@ -5,7 +5,7 @@
 #git add .
 #git commit -a -m 'first commit'
 
-project_name=default_project_env
+project_name=famous_last_words
 printf "Project name is: "$project_name
 printf "\nThis will be conda env name"
 # Create conda environment with project name
@@ -24,8 +24,3 @@ python -m spacy download en_core_web_sm
 # Install src as local package
 pip install -e .
 
-# Install utils from github
-cd src
-git clone https://github.com/safurrier/data-science-utils
-mv data-science-utils utils
-cd ..

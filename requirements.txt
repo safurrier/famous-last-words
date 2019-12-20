@@ -2,7 +2,6 @@ click
 pathlib
 Sphinx
 coverage
-awscli
 autopep8
 flake8
 jupyter
@@ -11,7 +10,5 @@ sphinx_rtd_theme
 pandas
 numpy
 matplotlib
-seaborn
-altair
 pandas-profiling
-scikit-learn
+transformers
