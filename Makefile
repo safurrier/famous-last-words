@@ -9,6 +9,11 @@ BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
 PROJECT_NAME = default-data-science-project
 PYTHON_INTERPRETER = python
+TRAIN_FILE=/data/raw/train.txt
+TEST_FILE=/data/raw/test.txt
+
+
+
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -31,9 +36,22 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -r requirements_pip.txt # Install packages only available in pip
 
 ## Make Dataset
-data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py
+data: 
+	$(PYTHON_INTERPRETER) dev/data/01-process-text-to-raw.py
 
+train_model: 
+	$(PYTHON_INTERPRETER) src/models/run_lm_finetuning.py \
+	--output_dir=output \
+	--model_type=gpt2 \
+	--model_name_or_path=gpt2 \
+	--do_train \
+	--train_data_file=($TRAIN_FILE) \
+	--do_eval \
+	--eval_data_file=($TEST_FILE)
+
+generate_text: 
+	$(PYTHON_INTERPRETER) src/run_generation.py --model_type=gpt2 --model_name_or_path='output'
+ 
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete

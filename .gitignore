@@ -89,3 +89,5 @@ reports/data-profiling/*
 # Bash command for adding fpaths of files above certain size to gitignore
 # find ./* -size +100M | cat >> .gitignore
 
+# Large Language Models
+output/*
