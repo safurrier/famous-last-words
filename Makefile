@@ -9,8 +9,8 @@ BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
 PROJECT_NAME = default-data-science-project
 PYTHON_INTERPRETER = python
-TRAIN_FILE=/data/raw/train.txt
-TEST_FILE=/data/raw/test.txt
+TRAIN_FILE=data/raw/train.txt
+TEST_FILE=data/raw/test.txt
 
 
 
@@ -36,18 +36,20 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -r requirements_pip.txt # Install packages only available in pip
 
 ## Make Dataset
-data: 
-	$(PYTHON_INTERPRETER) dev/data/01-process-text-to-raw.py
+last_words_data: 
+	$(PYTHON_INTERPRETER) dev/data/01-process-text-to-raw-last-words.py
+trolls_data: 
+	$(PYTHON_INTERPRETER) dev/data/01-process-text-to-raw-trolls.py	
 
 train_model: 
 	$(PYTHON_INTERPRETER) src/models/run_lm_finetuning.py \
-	--output_dir=output \
+	--output_dir=output-trolls \
 	--model_type=gpt2 \
 	--model_name_or_path=gpt2 \
 	--do_train \
-	--train_data_file=($TRAIN_FILE) \
+	--train_data_file=data/raw/train.txt \
 	--do_eval \
-	--eval_data_file=($TEST_FILE)
+	--eval_data_file=data/raw/test.txt
 
 generate_text: 
 	$(PYTHON_INTERPRETER) src/run_generation.py --model_type=gpt2 --model_name_or_path='output'
