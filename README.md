@@ -1,8 +1,7 @@
-default-data-science-project
+famous-last-words
 ==============================
 
-A default project structure for data projects. Created with reproducibility and automation in mind.
-Data and script execution should be kept within the Make pipeline. 
+Fiddling with GPT2 and other NLP models for interesting corpus text generation
 
 To start run the bash script to setup the environment properly.
 
