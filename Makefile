@@ -11,6 +11,7 @@ PROJECT_NAME = default-data-science-project
 PYTHON_INTERPRETER = python
 TRAIN_FILE=data/raw/train.txt
 TEST_FILE=data/raw/test.txt
+OUTPUT=output-trolls-2
 
 
 
@@ -37,22 +38,25 @@ requirements: test_environment
 
 ## Make Dataset
 last_words_data: 
-	$(PYTHON_INTERPRETER) dev/data/01-process-text-to-raw-last-words.py
+	$(PYTHON_INTERPRETER) dev/01-process-text-to-raw-last-words.py
 trolls_data: 
-	$(PYTHON_INTERPRETER) dev/data/01-process-text-to-raw-trolls.py	
+	$(PYTHON_INTERPRETER) dev/01-process-text-to-raw-trolls.py	
 
 train_model: 
 	$(PYTHON_INTERPRETER) src/models/run_lm_finetuning.py \
-	--output_dir=output-trolls \
+	--output_dir=$(OUTPUT) \
 	--model_type=gpt2 \
-	--model_name_or_path=gpt2 \
+	--model_name_or_path=distilgpt2 \
 	--do_train \
 	--train_data_file=data/raw/train.txt \
 	--do_eval \
 	--eval_data_file=data/raw/test.txt
 
 generate_text: 
-	$(PYTHON_INTERPRETER) src/run_generation.py --model_type=gpt2 --model_name_or_path='output'
+	$(PYTHON_INTERPRETER) src/run_generation.py --model_type=gpt2 \
+	--model_name_or_path=$(OUTPUT) \
+	--length=100 \
+
  
 ## Delete all compiled Python files
 clean:

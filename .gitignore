@@ -91,3 +91,6 @@ reports/data-profiling/*
 
 # Large Language Models
 output/*
+output-trolls/*
+./output/pytorch_model.bin
+./output-trolls/pytorch_model.bin

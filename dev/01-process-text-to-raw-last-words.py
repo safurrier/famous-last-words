@@ -22,7 +22,7 @@ test_text = test_text_df['LastStatement'].values
 
 # %% [markdown]
 # Write Data
-np.savetxt('data/raw/train.txt', train_text, delimiter="\n", fmt="%s")
-np.savetxt('data/raw/test.txt', test_text, delimiter="\n", fmt="%s")
+np.savetxt('data/raw/train.txt', train_text, delimiter="<|endoftext|>", fmt="%s")
+np.savetxt('data/raw/test.txt', test_text, delimiter="<|endoftext|>", fmt="%s")
 
 # %%
